@@ -28,7 +28,8 @@ db.once('open', function(){
 	console.log('Mongoose Connection Successful!');
 });
 
-//{Connect Models Here}
+var Note = require('./models/Note.js');
+var Show =  require('./models/Show.js');
 
 //ROUTES
 //++++++++++++++++++++++++
@@ -39,20 +40,36 @@ app.get('/', function(req, res){
 app.get('/scrape', function(req, res){
 	request('http://www.austinchronicle.com/calendar/music/', function(error, response, html){
 		var $ = cheerio.load(html);
-		var result =[];
 
 		$('section h2').each(function(i, element){
-			
+			var result = {};
 
-			var show = $(this).children('a').text();
-			var link = $(this).children('a').attr('href');
+			result.show = $(this).children('a').text();
+			result.link = 'http://www.austinchronicle.com/calendar/music/' + $(this).children('a').attr('href');
 
-			result.push({
-				show: show,
-				link: link
+			var entry = new Show(result);
+
+			entry.save(function(err, doc){
+				if (err){
+					console.log(err);
+				}
+				else{
+					console.log(doc)
+				}
 			});
 		});
-	console.log(result);
+	});
+	res.send('Scrape Complete');
+});
+
+app.get('/shows', function(req, res){
+	Show.find({}, function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.json(doc);
+		}
 	});
 });
 
