@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 var ShowSchema = new Schema ({
 	show: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	link: {
 		type: String,

@@ -5,7 +5,7 @@ $.getJSON('/shows', function(data){
 });
 
 $(document).on('click', '.show-name', function(){
-	$('#notes').empty();
+	$('#note-entry').empty();
 	var thisId = $(this).attr('data-id');
 
 	$.ajax({
@@ -13,10 +13,10 @@ $(document).on('click', '.show-name', function(){
 		url: '/shows/' + thisId
 	}).done(function(data){
 		console.log(data);
-		$('#notes').append('<h2>' + data.show + '</h2>');
-		$('#notes').append('<input id="title-input" name="title">');
-		$('#notes').append('<textarea id="body-input" name="body"></textarea>');
-		$('#notes').append('<button data-id="' + data._id + '" id="save-note">Save Note</button>');
+		$('#note-entry').append('<h2>Enter Note</h2>');
+		$('#note-entry').append('<input id="title-input" name="title">');
+		$('#note-entry').append('<textarea id="body-input" name="body"></textarea>');
+		$('#note-entry').append('<button data-id="' + data._id + '" id="save-note">Save Note</button>');
 
 		if(data.note){
 			$('#title-input').val(data.note.title);
@@ -36,7 +36,7 @@ $(document).on('click', '#save-note', function(){
 			body: $('#body-input').val()
 		}
 	}).done(function(data){
-		console.log(data);
+		console.log(data, "send to the dark side!");
 		$('#notes').empty();
 	});
 	$('#title-input').val('');
