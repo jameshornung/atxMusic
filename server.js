@@ -45,7 +45,7 @@ app.get('/scrape', function(req, res){
 			var result = {};
 
 			result.show = $(this).children('a').text();
-			result.link = 'http://www.austinchronicle.com/calendar/music/' + $(this).children('a').attr('href');
+			result.link = 'http://www.austinchronicle.com' + $(this).children('a').attr('href');
 
 			var entry = new Show(result);
 
@@ -69,6 +69,38 @@ app.get('/shows', function(req, res){
 		}
 		else{
 			res.json(doc);
+		}
+	});
+});
+
+app.get('/shows/:id', function(req, res){
+	Show.findOne({'_id': req.params.id})
+	.populate('note')
+	.exec(function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.json(doc);
+		}
+	});
+});
+
+app.post('/shows/:id', function(req, res){
+	var newNote = new Note(req.body);
+	newNote.save(function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			Show.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id}).exec(function(err, doc){
+				if(err){
+					console.log(err);
+				}
+				else{
+					res.send(doc);
+				}
+			});
 		}
 	});
 });
