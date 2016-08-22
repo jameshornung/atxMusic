@@ -6,6 +6,7 @@ $.getJSON('/shows', function(data){
 
 $(document).on('click', '.show-name', function(){
 	$('#note-entry').empty();
+	// $('#note-output').empty();
 	var thisId = $(this).attr('data-id');
 
 	$.ajax({
@@ -21,6 +22,7 @@ $(document).on('click', '.show-name', function(){
 		if(data.note){
 			$('#title-input').val(data.note.title);
 			$('#body-input').val(data.note.body);
+			$('#note-output').prepend("<p id='user-note'><span id='note-writer'>" + data.note.title + "</span> says: " + data.note.body + "</p>");
 		}
 	});
 });
@@ -36,9 +38,12 @@ $(document).on('click', '#save-note', function(){
 			body: $('#body-input').val()
 		}
 	}).done(function(data){
-		console.log(data, "send to the dark side!");
 		$('#notes').empty();
 	});
 	$('#title-input').val('');
 	$('#body-input').val('');
 });
+
+$(document).on('click', '#user-note', function(){
+	console.log(this);
+})

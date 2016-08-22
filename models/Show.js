@@ -16,10 +16,10 @@ var ShowSchema = new Schema ({
 		type: Date,
 		default: Date.now
 	},
-	note: {
+	note: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Note'
-	}
+	}]
 });
 
 var Show = mongoose.model('Show', ShowSchema);
