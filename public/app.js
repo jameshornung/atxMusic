@@ -1,6 +1,6 @@
 $.getJSON('/shows', function(data){
 	for (var i=0; i<data.length; i++){
-		$('#show-table').append("<tr><td class='show-name' data-id='" + data[i]._id + "'>" + data[i].show + "</td><td><a href='" + data[i].link + "' target='_blank'>" + "See Details" + "</a></td></tr>");
+		$('#show-table').append("<tr><td class='show-name' data-id='" + data[i]._id + "'>" + data[i].show + "</td><td class='show-details'><a href='" + data[i].link + "' target='_blank'>" + "See Details" + "</a></td></tr>");
 	}
 });
 
@@ -14,7 +14,7 @@ $(document).on('click', '.show-name', function(){
 	}).done(function(data){
 		console.log(data);
 		$('#notes').append('<h2>' + data.show + '</h2>');
-		$('#notes').append('<input id="title-input" name="title>');
+		$('#notes').append('<input id="title-input" name="title">');
 		$('#notes').append('<textarea id="body-input" name="body"></textarea>');
 		$('#notes').append('<button data-id="' + data._id + '" id="save-note">Save Note</button>');
 
