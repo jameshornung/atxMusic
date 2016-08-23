@@ -13,8 +13,12 @@ $(document).on('click', '.show-name', function(){
 		method: 'GET',
 		url: '/shows/' + thisId
 	}).done(function(data){
-		console.log(data.comment[0]);
-		console.log(data.comment[1]);
+		for(i=0; i<data.comment.length; i++){
+			$('#note-output').append(data.comment[i]);
+		};
+		
+		// console.log(data.comment[0]);
+		// console.log(data.comment[1]);
 		$('#note-entry').append('<h2>Enter Note</h2>');
 		// $('#note-entry').append('<input id="title-input" name="title">');
 		$('#note-entry').append('<textarea id="body-input" name="body"></textarea>');

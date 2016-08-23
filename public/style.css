@@ -34,7 +34,6 @@ html, body{
  	width: 25%;
  	float: left;
  	height: 450px;
- 	border: 1px solid gray;
  	box-sizing: border-box;
  }
 
@@ -43,7 +42,6 @@ html, body{
 	width: 50%;
 	float: left;
 	overflow-y: scroll;
-	border: 1px solid gray;
 	box-sizing: border-box;
 }
 
@@ -75,20 +73,21 @@ a{
 
 #note-output{
 	width: 25%;
-	height: 450px;
+	height: 150px;
 	float: left;
-	border: 1px solid gray;
 	box-sizing: border-box;
-}
-
-#title-input{
-	width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 10px;
 }
 
 #body-input{
-	width: 100%;
-	height: 300px;
+	width: 90%;
+	height: 150px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 10px;
 }
 
