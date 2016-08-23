@@ -88,12 +88,14 @@ app.get('/shows/:id', function(req, res){
 
 app.post('/shows/:id', function(req, res){
 	var newNote = new Note(req.body);
+	console.log('new note = ', newNote);
 	newNote.save(function(err, doc){
+		console.log('doc = ', doc);
 		if(err){
 			console.log(err);
 		}
 		else{
-			Show.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id}).exec(function(err, doc){
+			Show.findOneAndUpdate({'_id': req.params.id}, {'$addToSet': {comment: [doc.body]}}).exec(function(err, doc){
 				if(err){
 					console.log(err);
 				}

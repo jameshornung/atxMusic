@@ -13,19 +13,22 @@ $(document).on('click', '.show-name', function(){
 		method: 'GET',
 		url: '/shows/' + thisId
 	}).done(function(data){
-		console.log(data);
+		console.log(data.comment[0]);
+		console.log(data.comment[1]);
 		$('#note-entry').append('<h2>Enter Note</h2>');
-		$('#note-entry').append('<input id="title-input" name="title">');
+		// $('#note-entry').append('<input id="title-input" name="title">');
 		$('#note-entry').append('<textarea id="body-input" name="body"></textarea>');
 		$('#note-entry').append('<button data-id="' + data._id + '" id="save-note">Save Note</button>');
 
 		if(data.note){
-			$('#title-input').val(data.note.title);
+			// $('#title-input').val(data.note.title);
 			$('#body-input').val(data.note.body);
-			$('#note-output').prepend("<p id='user-note'><span id='note-writer'>" + data.note.title + "</span> says: " + data.note.body + "</p>");
+			// $('#note-output').prepend("<p id='user-note'><span id='note-writer'>" + data.note.title + "</span> says: " + data.note.body + "</p>");
 		}
 	});
 });
+
+
 
 $(document).on('click', '#save-note', function(){
 	var thisId = $(this).attr('data-id');
@@ -34,7 +37,7 @@ $(document).on('click', '#save-note', function(){
 		method: 'POST',
 		url: '/shows/' + thisId,
 		data: {
-			title: $('#title-input').val(),
+			// title: $('#title-input').val(),
 			body: $('#body-input').val()
 		}
 	}).done(function(data){
