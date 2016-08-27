@@ -23,5 +23,10 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.5.9",
     "request": "^2.74.0"
+  },
+  "devDependencies": {},
+  "engines":
+  {
+    "node": "6.2.2"
   }
 }
