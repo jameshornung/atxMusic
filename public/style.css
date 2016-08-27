@@ -1,26 +1,62 @@
 html, body{
 	height: 100%;
 	font-family: georgia, sans-serif;
-	
 }
 
 #container{
 	height: 100%;
 	overflow: auto;
-	background-color: rgb(234,234,234);
+	background-image: url('http://liveweirdrealty.com/wp-content/uploads/2014/03/Welcome-to-Austin-postcard1.jpg');
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	padding-top: 50px;
 }
 
  header{
- 	background-color: rgb(0,154,102);
- 	color: white;
+ 	/*background-color: rgb(0,154,102);*/
+ 	/*background-image: url('http://liveweirdrealty.com/wp-content/uploads/2014/03/Welcome-to-Austin-postcard1.jpg');
+ 	background-repeat: no-repeat;
+ 	background-size: cover;*/
+
+ 	color: black;
  	height: 100px;
  	padding: 15px;
- 	border-bottom: 2px solid rgb(0,152,68);
+ 	text-align: center;
  }
 
  #head{
- 	border-bottom: 3px solid black;
+ 	width: 25%;
+ 	margin-right: auto;
+ 	margin-left: auto;
+ 	background-color: antiquewhite;
  	margin-bottom: 40px;
+ 	border-radius: 2px;
+ }
+
+ h1{
+ 	font-size: 50px;
+ 	padding: 0px;
+ 	margin: 0px;
+ 	color: rgb(166,6,45);
+ 	font-weight: bold;
+ }
+
+ h2{
+ 	font-size: 30px;
+ 	padding: 0px;
+ 	margin: 0px;
+ 	font-weight: bold;
+ 	color: rgb(166,6,45)
+ }
+
+ #enterNote{
+ 	text-align: center;
+ 	background-color: antiquewhite;
+ 	width: 70%;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	border-radius: 2px;
+ 	margin-bottom: 15px;
  }
 
  #main-content{
@@ -80,6 +116,11 @@ a{
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;
+	background-color: antiquewhite;
+	border-radius: 2px;
+	color: rgb(166,6,45);
+	padding: 10px;
+	margin-top: 50px;
 }
 
 #body-input{
@@ -89,6 +130,8 @@ a{
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;
+	background-color: antiquewhite;
+	color: rgb(166,6,45);
 }
 
 #save-note{
