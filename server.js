@@ -108,7 +108,7 @@ app.post('/shows/:id', function(req, res){
 });
 
 //Listen on Port 8888
-app.listen(8888, function(){
+app.listen(process.env.PORT || 8888, function(){
 	console.log('App Running on Port 8888');
 });
 
